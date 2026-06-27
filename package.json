@@ -1,0 +1,11 @@
+{
+  "name": "ptg2e-mystic-echoes-vol1",
+  "version": "0.1.0",
+  "description": "Foundry VTT module for PTG2E: Mythic Echoes Vol. 1.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "validate": "node tools/validate-package.mjs",
+    "package": "powershell -ExecutionPolicy Bypass -File tools/package-release.ps1"
+  }
+}

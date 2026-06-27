@@ -1,0 +1,41 @@
+{
+  "id": "ptg2e-mystic-echoes-vol1",
+  "title": "PTG2E: Mythic Echoes Vol. 1",
+  "description": "Supplemental Foundry Virtual Tabletop module for Part-Time Gods 2e content from PTG2E_MythicEchoes_Vol1.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "authors": [
+    {
+      "name": "VentysGrimm"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "part-time-gods",
+        "type": "system",
+        "compatibility": {
+          "minimum": "0.1.0"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/ptg2e-mystic-echoes-vol1.mjs"
+  ],
+  "styles": [
+    "styles/ptg2e-mystic-echoes-vol1.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [],
+  "license": "UNLICENSED"
+}

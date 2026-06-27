@@ -1,0 +1,16 @@
+.ptg2e-me1-journal {
+  --ptg2e-me1-accent: #6d2d3f;
+}
+
+.ptg2e-me1-journal h1,
+.ptg2e-me1-journal h2,
+.ptg2e-me1-journal h3 {
+  border-color: var(--ptg2e-me1-accent);
+}
+
+.ptg2e-me1-source-note {
+  border-left: 3px solid var(--ptg2e-me1-accent);
+  color: var(--color-text-dark-secondary, #4b4a44);
+  margin: 0.75rem 0;
+  padding: 0.25rem 0 0.25rem 0.75rem;
+}

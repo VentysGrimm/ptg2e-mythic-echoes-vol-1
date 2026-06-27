@@ -1,0 +1,27 @@
+# Local source books and extraction cache stay out of the module package.
+/source-material/*
+!/source-material/README.md
+!/source-material/pdf/
+!/source-material/pdf/.gitkeep
+!/source-material/art/
+!/source-material/art/.gitkeep
+!/source-material/notes/
+!/source-material/notes/.gitkeep
+/source-material/pdf/*
+!/source-material/pdf/.gitkeep
+/source-material/art/*
+!/source-material/art/.gitkeep
+/source-material/notes/*
+!/source-material/notes/.gitkeep
+
+# Build output and dependency folders.
+/dist/
+/node_modules/
+/.tmp/
+/tmp/
+
+# Foundry/runtime noise.
+*.log
+*.lock
+Thumbs.db
+Desktop.ini

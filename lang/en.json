@@ -1,0 +1,7 @@
+{
+  "PTG2E_ME1.ModuleTitle": "PTG2E: Mythic Echoes Vol. 1",
+  "PTG2E_ME1.ModuleReady": "PTG2E: Mythic Echoes Vol. 1 is ready.",
+  "PTG2E_ME1.SourceBookTitle": "Mythic Echoes Vol. 1",
+  "PTG2E_ME1.Settings.ContentVersion.Name": "Installed Content Version",
+  "PTG2E_ME1.Settings.ContentVersion.Hint": "Tracks the module content version used for future migrations and compendium updates."
+}
