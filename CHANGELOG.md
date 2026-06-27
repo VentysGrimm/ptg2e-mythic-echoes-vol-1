@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- Added the first managed item compendium with source-backed Giant Relic items.
+
 ## 0.1.0
 
 - Created the initial Foundry VTT module boilerplate for PTG2E: Mythic Echoes Vol. 1.

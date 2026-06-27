@@ -1,6 +1,6 @@
 {
   "name": "ptg2e-mystic-echoes-vol1",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Foundry VTT module for PTG2E: Mythic Echoes Vol. 1.",
   "type": "module",
   "private": true,

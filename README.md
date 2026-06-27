@@ -19,8 +19,10 @@ The source folder is local-only. PDFs, extracted text, image crops, notes, and c
 ## Current Content
 
 - `Mythic Echoes: Rules Reference` - a managed JournalEntry compendium seeded on GM load.
+- `Mythic Echoes: Items and Powers` - a managed Item compendium seeded on GM load.
 - `00. Mythic Echoes Source Guide` - PDF source map and build inventory.
 - `01. Harder They Fall` - Chapter One routing for Giant character creation, Giant types, Giant missions, Giant relics, pregenerated Giants, and story targets.
+- `Giant Relics` - the first source-backed relic item slice from PDF p. 32-33.
 
 ## Current Structure
 
@@ -28,6 +30,7 @@ The source folder is local-only. PDFs, extracted text, image crops, notes, and c
 - `scripts/ptg2e-mystic-echoes-vol1.mjs` - module entrypoint.
 - `module/` - shared constants, compendium seeding, and source-backed content data.
 - `packs/mythic-echoes-rules/` - module compendium path for the rules reference pack.
+- `packs/mythic-echoes-items/` - module compendium path for item content.
 - `lang/en.json` - localization strings.
 - `styles/ptg2e-mystic-echoes-vol1.css` - small journal/content styling hooks.
 - `docs/work-checklist.md` - source-backed build checklist.
@@ -57,11 +60,11 @@ powershell -ExecutionPolicy Bypass -File tools/package-release.ps1
 
 The archive is written to `dist/` and excludes `source-material/`, `.git/`, development caches, and build output.
 
-The release zip contains one top-level folder named `ptg2e-mystic-echoes-vol1`, matching the module ID expected by Foundry. It includes only declared module content, so future actor, item, and scene pack work will not appear in releases until real compendium data is added and declared in `module.json`.
+The release zip contains one top-level folder named `ptg2e-mystic-echoes-vol1`, matching the module ID expected by Foundry. It includes only declared module content, so future actor and scene pack work will not appear in releases until real compendium data is added and declared in `module.json`.
 
 ## Release
 
-Pushing a tag that matches the manifest version, such as `v0.1.0`, runs the GitHub Actions release workflow. The workflow validates the module, builds the zip, and publishes these Foundry install assets:
+Pushing a tag that matches the manifest version, such as `v0.1.1`, runs the GitHub Actions release workflow. The workflow validates the module, builds the zip, and publishes these Foundry install assets:
 
 - `module.json`
-- `ptg2e-mystic-echoes-vol1-0.1.0.zip`
+- `ptg2e-mystic-echoes-vol1-0.1.1.zip`
