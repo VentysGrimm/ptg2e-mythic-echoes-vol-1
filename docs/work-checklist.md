@@ -39,6 +39,6 @@
 - [x] Add release manifest metadata for repository, manifest, download, readme, changelog, bugs, and license.
 - [x] Ensure release packaging omits undeclared future pack folders.
 - [x] Add GitHub Actions workflow to publish Foundry release assets from version tags.
-- [ ] Publish `dist/module.json` and `dist/ptg2e-mystic-echoes-vol1-0.1.1.zip` to GitHub release `v0.1.1`.
+- [x] Publish `dist/module.json` and `dist/ptg2e-mystic-echoes-vol1-0.1.1.zip` to GitHub release `v0.1.1`.
 - [ ] Install the module in Foundry and verify it loads beside the `part-time-gods` system.
 - [ ] Verify compendiums open and contain readable, organized content.
