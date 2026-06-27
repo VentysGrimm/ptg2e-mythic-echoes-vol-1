@@ -8,6 +8,7 @@ $version = $manifest.version
 $dist = Join-Path $root "dist"
 $staging = Join-Path $dist "$moduleId"
 $zipPath = Join-Path $dist "$moduleId-$version.zip"
+$releaseManifestPath = Join-Path $dist "module.json"
 
 if (Test-Path $staging) {
   Remove-Item -LiteralPath $staging -Recurse -Force
@@ -17,6 +18,7 @@ New-Item -ItemType Directory -Path $staging -Force | Out-Null
 
 $excludeRoots = @(
   ".git",
+  ".github",
   ".agents",
   ".codex",
   "dist",
@@ -32,9 +34,30 @@ Get-ChildItem -LiteralPath $root -Force | Where-Object {
   Copy-Item -LiteralPath $_.FullName -Destination $staging -Recurse -Force
 }
 
+$declaredPackPaths = @()
+if ($manifest.packs) {
+  $declaredPackPaths = @(
+    $manifest.packs | ForEach-Object {
+      ($_.path -replace "^[./\\]+", "").Replace("/", "\")
+    }
+  )
+}
+
+$stagingPacks = Join-Path $staging "packs"
+if (Test-Path $stagingPacks) {
+  Get-ChildItem -LiteralPath $stagingPacks -Directory | Where-Object {
+    $relativePackPath = "packs\$($_.Name)"
+    $declaredPackPaths -notcontains $relativePackPath
+  } | ForEach-Object {
+    Remove-Item -LiteralPath $_.FullName -Recurse -Force
+  }
+}
+
 if (Test-Path $zipPath) {
   Remove-Item -LiteralPath $zipPath -Force
 }
 
 Compress-Archive -LiteralPath $staging -DestinationPath $zipPath -Force
+Copy-Item -LiteralPath $manifestPath -Destination $releaseManifestPath -Force
 Write-Host "Wrote $zipPath"
+Write-Host "Wrote $releaseManifestPath"

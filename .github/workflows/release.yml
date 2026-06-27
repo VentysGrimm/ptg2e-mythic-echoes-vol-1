@@ -1,0 +1,66 @@
+name: Release Module
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish Foundry module
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate package
+        run: node tools/validate-package.mjs
+
+      - name: Package module
+        shell: pwsh
+        run: ./tools/package-release.ps1
+
+      - name: Verify release assets
+        shell: pwsh
+        run: |
+          $manifest = Get-Content module.json -Raw | ConvertFrom-Json
+          $expectedTag = "v$($manifest.version)"
+          $zipPath = "dist/$($manifest.id)-$($manifest.version).zip"
+
+          if ($env:GITHUB_REF_NAME -ne $expectedTag) {
+            throw "Tag $env:GITHUB_REF_NAME does not match module version $expectedTag."
+          }
+
+          if (!(Test-Path "dist/module.json")) {
+            throw "Missing dist/module.json."
+          }
+
+          if (!(Test-Path $zipPath)) {
+            throw "Missing $zipPath."
+          }
+
+      - name: Publish release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $manifest = Get-Content module.json -Raw | ConvertFrom-Json
+          $tag = "v$($manifest.version)"
+          $zipPath = "dist/$($manifest.id)-$($manifest.version).zip"
+          $assets = @("dist/module.json", $zipPath)
+
+          gh release view $tag *> $null
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload $tag @assets --clobber
+          } else {
+            gh release create $tag @assets --title $tag --notes-file CHANGELOG.md --latest --verify-tag
+          }

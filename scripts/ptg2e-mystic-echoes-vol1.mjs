@@ -6,6 +6,7 @@ import {
   SOURCE_BOOK_CODE,
   SOURCE_BOOK_TITLE
 } from "../module/constants.mjs";
+import { populateModuleCompendiums } from "../module/compendiums.mjs";
 
 Hooks.once("init", () => {
   game.settings.register(MODULE_ID, "contentVersion", {
@@ -32,4 +33,8 @@ Hooks.once("ready", () => {
   }
 
   console.log(`${MODULE_TITLE} | ${game.i18n.localize("PTG2E_ME1.ModuleReady")}`);
+
+  populateModuleCompendiums().catch((error) => {
+    console.error(`${MODULE_TITLE} | Failed to populate module compendiums.`, error);
+  });
 });
